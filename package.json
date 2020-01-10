@@ -1,0 +1,19 @@
+{
+  "name": "vanilla-projectile-motion",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Comum/vanilla-projectile-motion.git"
+  },
+  "author": "Miguel Ribeiro",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Comum/vanilla-projectile-motion/issues"
+  },
+  "homepage": "https://github.com/Comum/vanilla-projectile-motion#readme"
+}
