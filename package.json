@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "http-server",
     "test": "test"
   },
   "repository": {
@@ -15,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/Comum/vanilla-projectile-motion/issues"
   },
-  "homepage": "https://github.com/Comum/vanilla-projectile-motion#readme"
+  "homepage": "https://github.com/Comum/vanilla-projectile-motion#readme",
+  "devDependencies": {
+    "http-server": "^0.12.1"
+  }
 }
