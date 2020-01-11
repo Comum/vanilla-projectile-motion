@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "http-server",
+    "start": "npm run build && cd dist && http-server",
+    "build": "webpack --config webpack.config.js",
     "test": "test"
   },
   "repository": {
@@ -18,6 +19,9 @@
   },
   "homepage": "https://github.com/Comum/vanilla-projectile-motion#readme",
   "devDependencies": {
-    "http-server": "^0.12.1"
+    "copy-webpack-plugin": "^5.1.1",
+    "http-server": "^0.12.1",
+    "webpack": "^4.41.5",
+    "webpack-cli": "^3.3.10"
   }
 }
