@@ -19,8 +19,8 @@ class ProjectileContainer {
     this.canvas.height = this.container.offsetHeight;
   }
 
-  onClickContainer() {
-    console.log("I was clicked");
+  onClickContainer(event) {
+    const { clientX, clientY } = event;
   }
 
   onClickClearButton() {
