@@ -1,1 +1,3 @@
-console.log("I am being imported");
+import ProjectileContainer from "./components/projectileContainer";
+
+new ProjectileContainer();
