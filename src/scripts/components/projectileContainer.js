@@ -5,6 +5,10 @@ class ProjectileContainer {
     this.projectiles = [];
 
     this.container = document.querySelector("#canvas-container");
+    const { x, y, width } = this.container.getBoundingClientRect();
+    this.containerX = x;
+    this.containerY = y;
+    this.containerWidth = width;
     this.clearButton = document.querySelector("#clear-button");
     this.canvas = document.createElement("canvas");
     this.ctx = this.canvas.getContext("2d");
@@ -29,11 +33,10 @@ class ProjectileContainer {
 
   onClickContainer(event) {
     const { clientX, clientY } = event;
-    // initial value needs to be relative to the box and not the screen
-    // use get boundingClientRect in the constructor and subtract the offset from the
-    // values above
+    const initialX = clientX - this.containerX;
+    const initialY = clientY - this.containerY;
 
-    this.projectiles.push(new Projectile(clientX, clientY));
+    this.projectiles.push(new Projectile(initialX, initialY));
     // remove next line
     requestAnimationFrame(this.updateBound);
   }
