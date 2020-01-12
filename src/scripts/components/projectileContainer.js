@@ -1,3 +1,5 @@
+import Projectile from "./projectile";
+
 class ProjectileContainer {
   constructor() {
     this.projectiles = [];
@@ -10,8 +12,11 @@ class ProjectileContainer {
     this.setCanvasSize();
 
     this.container.appendChild(this.canvas);
-    this.container.addEventListener("click", this.onClickContainer);
+    this.container.addEventListener("click", this.onClickContainer.bind(this));
     this.clearButton.addEventListener("click", this.onClickClearButton);
+
+    this.updateBound = this.update.bind(this);
+    requestAnimationFrame(this.updateBound);
   }
 
   setCanvasSize() {
@@ -21,10 +26,23 @@ class ProjectileContainer {
 
   onClickContainer(event) {
     const { clientX, clientY } = event;
+
+    this.projectiles.push(new Projectile(clientX, clientY));
+    // remove next line
+    requestAnimationFrame(this.updateBound);
   }
 
   onClickClearButton() {
     this.projectiles = [];
+  }
+
+  update() {
+    this.ctx.clearRect(0, 0, this.width, this.height);
+
+    for (const projectile of this.projectiles) {
+      console.log("projectile", projectile);
+    }
+    //requestAnimationFrame(this.updateBound);
   }
 }
 
