@@ -1,4 +1,3 @@
-import constants from "../constants/constants";
 import utils from "../utils/utils";
 
 class Projectile {
@@ -7,10 +6,7 @@ class Projectile {
     this.positionY = initialPositionY;
 
     this.colour = utils.generateRandomColour();
-    this.size = utils.generateRandomNumber(
-      constants.projectileMinSize,
-      constants.projectileMinSize
-    );
+    this.size = utils.generateProjectileSize();
   }
 
   update() {

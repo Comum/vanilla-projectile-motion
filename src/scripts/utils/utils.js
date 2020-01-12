@@ -1,3 +1,5 @@
+import constants from "../constants/constants";
+
 function generateRandomColour() {
   const hexValues = "0123456789ABCDEF";
   let color = "#";
@@ -10,10 +12,22 @@ function generateRandomColour() {
   return color;
 }
 
-const generateRandomNumber = (min, max) =>
-  Math.floor(Math.random() * max + min);
+const generateRandomNumber = () =>
+  Math.floor(
+    Math.random() * constants.PROJECTILE_MAX_SIZE +
+      constants.PROJECTILE_MIN_SIZE
+  );
+
+const halve = value => value / 2;
+
+const generateProjectileSize = () => {
+  const number = generateRandomNumber();
+  return halve(number);
+};
 
 export default {
   generateRandomColour,
-  generateRandomNumber
+  generateRandomNumber,
+  generateProjectileSize,
+  halve
 };

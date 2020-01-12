@@ -1,4 +1,5 @@
 export default {
-  projectileMinSize: 50,
-  projectileMaxSize: 100
+  PROJECTILE_MIN_SIZE: 50,
+  PROJECTILE_MAX_SIZE: 100,
+  INITIAL_VALUE: 0
 };
