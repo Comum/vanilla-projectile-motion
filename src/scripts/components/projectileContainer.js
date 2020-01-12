@@ -49,12 +49,7 @@ class ProjectileContainer {
   }
 
   update() {
-    console.log("update");
-    this.ctx.clearRect(0, 0, this.width, this.height);
-
-    if (this.projectiles.length === 0) {
-      console.log("should clear canvas");
-    }
+    this.clearCanvas.call(this);
 
     for (const projectile of this.projectiles) {
       projectile.update();
@@ -74,6 +69,12 @@ class ProjectileContainer {
       this.ctx.restore();
     }
     //requestAnimationFrame(this.updateBound);
+  }
+
+  clearCanvas() {
+    this.ctx.rect(0, 0, this.canvas.width, this.canvas.height);
+    this.ctx.fillStyle = "white";
+    this.ctx.fill();
   }
 }
 
