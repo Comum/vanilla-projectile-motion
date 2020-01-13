@@ -40,13 +40,13 @@ class Projectile {
         return newPosition;
       }
 
+      this.vx = (this.vx / constants.VELOCITY_PERCENTAGE_REDUCTION) * -1;
+
       if (newPosition + this.size >= this.width) {
-        this.vx = (this.vx / constants.VELOCITY_PERCENTAGE_REDUCTION) * -1;
         return this.width - this.size;
       }
 
       if (newPosition - this.size <= 0) {
-        this.vx = (this.vx / constants.VELOCITY_PERCENTAGE_REDUCTION) * -1;
         return 0 + this.size;
       }
     }
