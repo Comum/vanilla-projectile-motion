@@ -1,12 +1,23 @@
 import utils from "../utils/utils";
 
 class Projectile {
-  constructor(initialPositionX, initialPositionY) {
-    this.positionX = initialPositionX;
-    this.positionY = initialPositionY;
-
+  constructor(initialPositionX, initialPositionY, maxWidth, maxHeight) {
     this.colour = utils.generateRandomColour();
     this.size = utils.generateProjectileSize();
+
+    this.positionX = utils.updateValueForDefault(
+      initialPositionX,
+      this.size,
+      maxWidth
+    );
+    this.positionY = utils.updateValueForDefault(
+      initialPositionY,
+      this.size,
+      maxHeight
+    );
+
+    console.log("positionX: ", this.positionX);
+    console.log("positionY: ", this.positionY);
   }
 
   update() {

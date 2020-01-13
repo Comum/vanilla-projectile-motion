@@ -36,7 +36,9 @@ class ProjectileContainer {
     const initialX = clientX - this.containerX;
     const initialY = clientY - this.containerY;
 
-    this.projectiles.push(new Projectile(initialX, initialY));
+    this.projectiles.push(
+      new Projectile(initialX, initialY, this.canvas.width, this.canvas.height)
+    );
     // remove next line
     requestAnimationFrame(this.updateBound);
   }

@@ -25,9 +25,22 @@ const generateProjectileSize = () => {
   return halve(number);
 };
 
+const updateValueForDefault = (value, size, max) => {
+  if (value - size < 0) {
+    return size;
+  }
+
+  if (value + size > max) {
+    return max - size;
+  }
+
+  return value;
+};
+
 export default {
   generateRandomColour,
   generateRandomNumber,
   generateProjectileSize,
-  halve
+  halve,
+  updateValueForDefault
 };
