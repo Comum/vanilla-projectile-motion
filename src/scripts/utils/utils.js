@@ -12,11 +12,10 @@ function generateRandomColour() {
   return color;
 }
 
-const generateRandomNumber = () =>
-  Math.floor(
-    Math.random() * constants.PROJECTILE_MAX_SIZE +
-      constants.PROJECTILE_MIN_SIZE
-  );
+const generateRandomNumber = (
+  max = constants.PROJECTILE_MAX_SIZE,
+  min = constants.PROJECTILE_MIN_SIZE
+) => Math.floor(Math.random() * max + min);
 
 const halve = value => value / 2;
 
