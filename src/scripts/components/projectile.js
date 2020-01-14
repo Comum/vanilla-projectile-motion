@@ -19,11 +19,11 @@ class Projectile {
       this.height
     );
 
-    let originalVelocity = utils.generateRandomNumber(
+    const originalVelocity = utils.generateRandomNumber(
       constants.MAX_X_VELOCITY,
       constants.MIN_X_VELOCITY
     );
-    let multiplier = utils.generateRandomNumber(2, 1) === 1 ? 1 : -1;
+    const multiplier = utils.generateRandomNumber(2, 1) === 1 ? 1 : -1;
     this.vx = multiplier * originalVelocity;
   }
 
