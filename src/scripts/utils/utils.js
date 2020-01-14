@@ -36,10 +36,21 @@ const updateValueForDefault = (value, size, max) => {
   return value;
 };
 
+const generateRandomVelocity = () => {
+  const originalVelocity = generateRandomNumber(
+    constants.MAX_X_VELOCITY,
+    constants.MIN_X_VELOCITY
+  );
+  const multiplier = generateRandomNumber(2, 1) === 1 ? 1 : -1;
+
+  return multiplier * originalVelocity;
+};
+
 export default {
   generateRandomColour,
   generateRandomNumber,
   generateProjectileSize,
   halve,
-  updateValueForDefault
+  updateValueForDefault,
+  generateRandomVelocity
 };
