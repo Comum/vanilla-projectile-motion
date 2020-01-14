@@ -39,15 +39,10 @@ class ProjectileContainer {
     this.projectiles.push(
       new Projectile(initialX, initialY, this.canvas.width, this.canvas.height)
     );
-    // remove next line
-    requestAnimationFrame(this.updateBound);
   }
 
   onClickClearButton() {
-    console.log("clear", this);
     this.projectiles = [];
-    // remove next line
-    requestAnimationFrame(this.updateBound);
   }
 
   update() {
@@ -70,7 +65,7 @@ class ProjectileContainer {
       this.ctx.fill();
       this.ctx.restore();
     }
-    //requestAnimationFrame(this.updateBound);
+    requestAnimationFrame(this.updateBound);
   }
 
   clearCanvas() {

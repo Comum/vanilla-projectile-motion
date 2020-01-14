@@ -19,14 +19,16 @@ class Projectile {
       this.height
     );
 
-    const velocityX = utils.generateRandomVelocity();
+    const velocityX = utils.generateRandomVelocityWithMultiplier();
     this.vx = velocityX;
+
+    const velocityY = utils.generateRandomVelocity();
+    this.vy = velocityY;
   }
 
   update() {
-    console.log("Projectile.update", this);
     this.positionX = this.updateValues("x");
-    // this.positionY = this.calculateNewPosition("y");
+    this.positionY = this.updateValues("y");
   }
 
   updateValues(type) {
@@ -36,10 +38,33 @@ class Projectile {
         return newPosition;
       }
 
-      this.vx = (this.vx / constants.VELOCITY_PERCENTAGE_REDUCTION) * -1;
+      this.vx =
+        (this.vx - this.vx * constants.VELOCITY_PERCENTAGE_REDUCTION) * -1;
 
       if (newPosition + this.size >= this.width) {
         return this.width - this.size;
+      }
+
+      if (newPosition - this.size <= 0) {
+        return 0 + this.size;
+      }
+    }
+
+    if (type === "y") {
+      let newPosition =
+        this.positionY + this.vy - 0.5 * constants.ACELEARTION * 2;
+      if (
+        newPosition + this.size < this.height &&
+        newPosition - this.size > 0
+      ) {
+        return newPosition;
+      }
+
+      this.vy =
+        (this.vy - this.vy * constants.VELOCITY_PERCENTAGE_REDUCTION) * -1;
+
+      if (newPosition + this.size >= this.height) {
+        return this.height - this.size;
       }
 
       if (newPosition - this.size <= 0) {
