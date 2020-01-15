@@ -1,3 +1,3 @@
-import ProjectileContainer from "./components/projectileContainer";
+import ProjectileContainer from "./components/projectile-container";
 
 new ProjectileContainer();
