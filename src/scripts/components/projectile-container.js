@@ -26,11 +26,25 @@ class ProjectileContainer {
     requestAnimationFrame(this.updateBound);
   }
 
+  /**
+   * @name ProjectileContainer.setCanvasSize
+   *
+   * @description
+   * Updates the position of the projectile
+   */
   setCanvasSize() {
     this.canvas.width = this.container.offsetWidth;
     this.canvas.height = this.container.offsetHeight;
   }
 
+  /**
+   * @name ProjectileContainer.onClickContainer
+   *
+   * @description
+   * Creates a projectile when a click occours inside the canvas
+   *
+   * @param {object} event click event
+   */
   onClickContainer(event) {
     const { clientX, clientY } = event;
     const initialX = clientX - this.containerX;
@@ -41,10 +55,22 @@ class ProjectileContainer {
     );
   }
 
+  /**
+   * @name ProjectileContainer.onClickClearButton
+   *
+   * @description
+   * Clears the projectile list
+   */
   onClickClearButton() {
     this.projectiles = [];
   }
 
+  /**
+   * @name ProjectileContainer.update
+   *
+   * @description
+   * Updates all the projectiles in the canvas
+   */
   update() {
     this.clearCanvas.call(this);
 
@@ -68,6 +94,12 @@ class ProjectileContainer {
     requestAnimationFrame(this.updateBound);
   }
 
+  /**
+   * @name ProjectileContainer.clearCanvas
+   *
+   * @description
+   * Clears the canvas
+   */
   clearCanvas() {
     this.ctx.rect(0, 0, this.canvas.width, this.canvas.height);
     this.ctx.fillStyle = "white";

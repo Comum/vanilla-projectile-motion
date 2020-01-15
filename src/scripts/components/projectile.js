@@ -1,5 +1,4 @@
 import utils from "../utils/utils";
-import constants from "../constants/constants";
 
 class Projectile {
   constructor(initialPositionX, initialPositionY, width, height) {
@@ -8,12 +7,12 @@ class Projectile {
 
     this.colour = utils.generateRandomColour();
     this.size = utils.generateProjectileSize();
-    this.positionX = utils.updateValueForDefault(
+    this.positionX = utils.updateValueWidthinDelimiter(
       initialPositionX,
       this.size,
       this.width
     );
-    this.positionY = utils.updateValueForDefault(
+    this.positionY = utils.updateValueWidthinDelimiter(
       initialPositionY,
       this.size,
       this.height
@@ -26,12 +25,28 @@ class Projectile {
     this.vy = velocityY;
   }
 
+  /**
+   * @name Projectile.update
+   *
+   * @description
+   * Updates the position of the projectile
+   */
   update() {
-    this.positionX = this.updateValues("x", this.width);
-    this.positionY = this.updateValues("y", this.height);
+    this.positionX = this.updatePosition("x", this.width);
+    this.positionY = this.updatePosition("y", this.height);
   }
 
-  updateValues(axis, delimiter) {
+  /**
+   * @name Projectile.updatePosition
+   *
+   * @description
+   * Updates the position of the projectile in the axis passed
+   *
+   * @param {string} axis
+   * @param {number} delimiter
+   * @returns {number}
+   */
+  updatePosition(axis, delimiter) {
     const velocityParam = utils.generateParam("v", axis);
     const positionParam = utils.generateParam("position", axis.toUpperCase());
     let newPosition = utils.calculateNewPosition(
