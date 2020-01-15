@@ -46,6 +46,34 @@ const generateRandomVelocityWithMultiplier = () => {
   return multiplier * originalVelocity;
 };
 
+const calculateNewVelocity = velocity =>
+  (velocity - velocity * constants.VELOCITY_PERCENTAGE_REDUCTION) * -1;
+
+const calculateNewPosition = (position, velocity, axis) => {
+  let newPosition = position + velocity;
+
+  if (axis === "y") {
+    newPosition = newPosition - 0.5 * constants.ACELERATION * 2;
+  }
+
+  return newPosition;
+};
+
+const generateParam = (param, axis) => `${param}${axis}`;
+
+const isPositionInsideDelimiters = (position, size, delimiter) =>
+  position + size < delimiter && position - size > 0;
+
+const getPositionNextToDelimiter = (position, size, delimiter) => {
+  if (position + size >= delimiter) {
+    return delimiter - size;
+  }
+
+  if (position - size <= 0) {
+    return 0 + size;
+  }
+};
+
 export default {
   generateRandomColour,
   generateRandomNumber,
@@ -53,5 +81,10 @@ export default {
   halve,
   updateValueForDefault,
   generateRandomVelocity,
-  generateRandomVelocityWithMultiplier
+  generateRandomVelocityWithMultiplier,
+  calculateNewVelocity,
+  calculateNewPosition,
+  generateParam,
+  isPositionInsideDelimiters,
+  getPositionNextToDelimiter
 };

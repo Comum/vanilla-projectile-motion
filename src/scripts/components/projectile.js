@@ -27,50 +27,27 @@ class Projectile {
   }
 
   update() {
-    this.positionX = this.updateValues("x");
-    this.positionY = this.updateValues("y");
+    this.positionX = this.updateValues("x", this.width);
+    this.positionY = this.updateValues("y", this.height);
   }
 
-  updateValues(type) {
-    if (type === "x") {
-      let newPosition = this.positionX + this.vx;
-      if (newPosition + this.size < this.width && newPosition - this.size > 0) {
-        return newPosition;
-      }
+  updateValues(axis, delimiter) {
+    const velocityParam = utils.generateParam("v", axis);
+    const positionParam = utils.generateParam("position", axis.toUpperCase());
+    let newPosition = utils.calculateNewPosition(
+      this[positionParam],
+      this[velocityParam],
+      axis
+    );
 
-      this.vx =
-        (this.vx - this.vx * constants.VELOCITY_PERCENTAGE_REDUCTION) * -1;
-
-      if (newPosition + this.size >= this.width) {
-        return this.width - this.size;
-      }
-
-      if (newPosition - this.size <= 0) {
-        return 0 + this.size;
-      }
+    if (utils.isPositionInsideDelimiters(newPosition, this.size, delimiter)) {
+      return newPosition;
     }
 
-    if (type === "y") {
-      let newPosition =
-        this.positionY + this.vy - 0.5 * constants.ACELEARTION * 2;
-      if (
-        newPosition + this.size < this.height &&
-        newPosition - this.size > 0
-      ) {
-        return newPosition;
-      }
+    const velocity = this[velocityParam];
+    this[velocityParam] = utils.calculateNewVelocity(velocity);
 
-      this.vy =
-        (this.vy - this.vy * constants.VELOCITY_PERCENTAGE_REDUCTION) * -1;
-
-      if (newPosition + this.size >= this.height) {
-        return this.height - this.size;
-      }
-
-      if (newPosition - this.size <= 0) {
-        return 0 + this.size;
-      }
-    }
+    return utils.getPositionNextToDelimiter(newPosition, this.size, delimiter);
   }
 }
 
