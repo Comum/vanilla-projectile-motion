@@ -14,7 +14,7 @@ function generateRandomColour() {
   let i;
 
   for (i = 0; i < 6; i++) {
-    color += hexValues[Math.floor(Math.random() * 16)];
+    color += hexValues[generateRandomNumber(16, 0)];
   }
 
   return color;
@@ -33,7 +33,7 @@ function generateRandomColour() {
 const generateRandomNumber = (
   max = constants.PROJECTILE_MAX_SIZE,
   min = constants.PROJECTILE_MIN_SIZE
-) => Math.floor(Math.random() * max + min);
+) => Math.floor(Math.random() * Math.floor(max - min)) + min;
 
 /**
  * @name halveValue
@@ -171,27 +171,6 @@ const generateParam = (param, axis) => `${param}${axis}`;
 const isPositionInsideDelimiters = (position, size, delimiter) =>
   position + size < delimiter && position - size > 0;
 
-/**
- * @name getPositionNextToDelimiter
- *
- * @description
- * Checks if the position is inside the bounds of the canvas
- *
- * @param {number} position position of the projectile
- * @param {number} size size of the projectile
- * @param {number} delimiter delimiter of the axis of the canvas
- * @returns {number}
- */
-const getPositionNextToDelimiter = (position, size, delimiter) => {
-  if (position + size >= delimiter) {
-    return delimiter - size;
-  }
-
-  if (position - size <= 0) {
-    return 0 + size;
-  }
-};
-
 export default {
   generateRandomColour,
   generateRandomNumber,
@@ -203,6 +182,5 @@ export default {
   calculateNewVelocity,
   calculateNewPosition,
   generateParam,
-  isPositionInsideDelimiters,
-  getPositionNextToDelimiter
+  isPositionInsideDelimiters
 };

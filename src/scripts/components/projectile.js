@@ -62,7 +62,7 @@ class Projectile {
     const velocity = this[velocityParam];
     this[velocityParam] = utils.calculateNewVelocity(velocity);
 
-    return utils.getPositionNextToDelimiter(newPosition, this.size, delimiter);
+    return utils.updateValueWidthinDelimiter(newPosition, this.size, delimiter);
   }
 }
 
