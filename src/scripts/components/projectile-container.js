@@ -8,7 +8,6 @@ class ProjectileContainer {
     const { x, y, width } = this.container.getBoundingClientRect();
     this.containerX = x;
     this.containerY = y;
-    this.containerWidth = width;
     this.clearButton = document.querySelector("#clear-button");
     this.canvas = document.createElement("canvas");
     this.ctx = this.canvas.getContext("2d");
@@ -72,7 +71,7 @@ class ProjectileContainer {
    * Updates all the projectiles in the canvas
    */
   update() {
-    this.clearCanvas.call(this);
+    this.clearCanvas();
 
     for (const projectile of this.projectiles) {
       projectile.update();
